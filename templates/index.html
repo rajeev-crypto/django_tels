@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>hello World {{name}}!!!</h1>
+<form action="add">
+  Enter first number: <input type="text" name="num1"><br>
+  Enter end number: <input type="text" name="num2"><br>
+  <input type="submit">
+
+</form>
 {% endblock %}
