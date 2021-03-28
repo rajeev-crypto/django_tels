@@ -1,4 +1,5 @@
 {% load static %}
+{% static "images" as baseUrl %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +73,10 @@
         <div class="cards-wrapper">
           <div class="card">
             <div class="front-side">
-              <img src="images/forest.jpg" alt="Forest" class="card-image" />
+              <img src="{% static 'images/forest.jpg' %}" alt="Forest" class="card-image" />
               <h1 class="tour-name">The wild forest</h1>
               <ul class="card-list">
-                <li class="card-list-item">7 days tour</li>
+                <li class="card-list-item">{{day}} days tour</li>
                 <li class="card-list-item">Up to 20 people</li>
                 <li class="card-list-item">4 tour guides</li>
                 <li class="card-list-item">Sleep in private tents</li>
@@ -95,7 +96,7 @@
           </div>
           <div class="card">
             <div class="front-side">
-              <img src="images/river.jpg" alt="River" class="card-image" />
+              <img src="{% static 'images/river.jpg' %}" alt="River" class="card-image" />
               <h1 class="tour-name">Along the river</h1>
               <ul class="card-list">
                 <li class="card-list-item">9 days tour</li>
@@ -118,7 +119,7 @@
           </div>
           <div class="card">
             <div class="front-side">
-              <img src="images/sea.jpg" alt="Sea" class="card-image" />
+              <img src="{% static 'images/sea.jpg' %}" alt="Sea" class="card-image" />
               <h1 class="tour-name">The island beach</h1>
               <ul class="card-list">
                 <li class="card-list-item">5 days tour</li>
@@ -147,36 +148,35 @@
       <section class="stories">
         <div class="video-container">
           <video class="bg-video" autoplay muted loop>
-            <source src="images/video.mp4" type="video/mp4" />
+            <source src=" {% static 'images/video.mp4' %}" type="video/mp4" />
           </video>
         </div>
+
+
         <div class="stories-wrapper">
+          {% for d in dests %}
           <div class="story-bg">
             <div class="story">
               <img
-                src="images/story-img-1.jpg"
+                src="{{baseUrl}}/{{d.img}}"
                 alt="Customer image"
                 class="story-image"
               />
               <div class="story-text">
                 <h1 class="story-heading">
-                  These were the best days of this year
+                  {{d.name}}
                 </h1>
                 <p class="story-paragraph">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Architecto quas, repudiandae veritatis nam mollitia cumque
-                  distinctio, quia aperiam aliquid at consequuntur libero
-                  quisquam facilis laborum inventore repellat perspiciatis vel
-                  fugiat molestias recusandae eum necessitatibus quo possimus
-                  aspernatur? Nobis, architecto eaque.
+                  {{d.desc}}
                 </p>
               </div>
             </div>
           </div>
-          <div class="story-bg">
+          {% endfor %}
+          <!-- <div class="story-bg">
             <div class="story">
               <img
-                src="images/story-img-2.jpg"
+                src="{% static 'images/story-img-2.jpg' %}"
                 alt="Customer image"
                 class="story-image"
               />
@@ -194,7 +194,7 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
       <!-- End of Stories -->
